@@ -7,4 +7,6 @@
   <router-view></router-view>
 </template>
 
-<style scoped></style>
+<style lang="less">
+@import url("@/assets/styles/base.less");
+</style>
