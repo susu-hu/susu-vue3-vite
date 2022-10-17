@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-10-10 22:49:55
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-10-12 23:08:47
+ * @LastEditTime: 2022-10-17 22:39:39
  * @FilePath: \web\src\components\lottie.vue
  * @Description: lottie-web动画 ae导json动画
 -->
@@ -16,7 +16,7 @@ import { onMounted, ref } from "vue";
 const props = defineProps({
   src: {
     type: Object,
-    default: {},
+    default: () => {},
   },
   path: {
     type: String,
