@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-10-10 22:49:55
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-10-17 22:39:39
+ * @LastEditTime: 2022-10-17 23:15:12
  * @FilePath: \web\src\components\lottie.vue
  * @Description: lottie-web动画 ae导json动画
 -->
@@ -40,7 +40,8 @@ onMounted(() => {
       loop: props.loop, // 循环播放，默认：true
       autoplay: props.autoplay, // 自动播放 ，默认true
       path: props.path,
-      animationData: Object.keys(props.src).length == 0 ? "" : props.src,
+      animationData:
+        props.src && Object.keys(props.src).length == 0 ? "" : props.src,
     });
   }
   console.log(props);
