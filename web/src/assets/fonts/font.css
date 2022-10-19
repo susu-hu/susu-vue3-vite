@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'HuXiaoBo';
+  src: url('./HuXiaoBoNanShenTi-2.otf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AlibabaPuHuiTiB";
+  src: url('./Alibaba-PuHuiTi-Bold.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+

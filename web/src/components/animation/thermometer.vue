@@ -2,9 +2,13 @@
   <section class="container flex-row j_c">
     <div class="container-box">
       <div class="box-lines">
-        <div v-for="(item, index) in stepList" :key="index" class="line-item">
-          <div class="left" :data-num="item"></div>
-          <div class="right" :data-num="item"></div>
+        <div
+          v-for="(item, index) in stepList"
+          :key="index"
+          class="line-item flex-row j_b"
+        >
+          <div class="left">{{ item }}</div>
+          <div class="right">{{ item }}</div>
         </div>
       </div>
       <div class="box-pan">
@@ -63,11 +67,9 @@ if (parseInt(props.data.value) > parseInt(props.data.warn)) {
 <style scoped lang="less">
 .container {
   font-size: 16px;
-  font-family: AlibabaPuHuiTiM;
   color: #ffffff;
   height: 280px;
   width: 300px;
-  border: 1px solid orange;
   &-box {
     position: relative;
     .box-pan {
@@ -77,7 +79,7 @@ if (parseInt(props.data.value) > parseInt(props.data.warn)) {
       height: 203px;
       position: absolute;
       left: calc(50% - 42px);
-      top: -10px;
+      top: -2px;
       z-index: 1;
       &::before {
         content: "";
@@ -198,59 +200,53 @@ if (parseInt(props.data.value) > parseInt(props.data.warn)) {
     }
     .box-lines {
       .line-item {
-        width: 90px;
         font-size: 12px;
-        margin-bottom: 30px;
-        height: 1px;
-        padding-right: 90px;
-        position: relative;
+        line-height: 17px;
+        margin-bottom: 13px;
         &:last-child {
           margin-bottom: 0;
         }
         .left {
-          position: absolute;
-          left: -5px;
-          width: 19px;
-          height: 1px;
-          opacity: 0.9;
-          border: 1px dashed rgba(255, 255, 255, 0.39);
+          margin-right: 118px;
+          min-width: 25px;
+          text-align: right;
+          position: relative;
           &::after {
-            content: attr(data-num);
+            content: "";
+            width: 19px;
+            opacity: 0.9;
+            height: 1px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.39);
             position: absolute;
-            top: -10px;
-            left: -35px;
-            text-align: right;
-            min-width: 25px;
+            top: calc(50% - 1px);
+            right: -25px;
           }
         }
         .right {
-          position: absolute;
-          right: -5px;
-          width: 19px;
-          height: 1px;
-          opacity: 0.9;
-          border: 1px dashed rgba(255, 255, 255, 0.39);
-          &::before {
-            content: attr(data-num);
+          min-width: 25px;
+          text-align: left;
+          position: relative;
+          &::after {
+            content: "";
+            width: 19px;
+            opacity: 0.9;
+            height: 1px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.39);
             position: absolute;
-            top: -10px;
-            right: -35px;
-            text-align: left;
-            min-width: 25px;
+            top: calc(50% - 1px);
+            left: -25px;
           }
         }
       }
     }
   }
   &-title {
-    margin-left: 35px;
+    margin-left: 15px;
     font-size: 24px;
-    font-family: YouSheBiaoTiHei;
+    font-family: HuXiaoBo;
     color: #f2af33;
     line-height: 31px;
     position: relative;
-    min-width: 80px;
-    text-align: center;
     text {
       font-size: 12px;
     }

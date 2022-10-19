@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-row flex-wrap">
+  <div class="flex-row flex-wrap j_c">
     <Thermometer :show="showAni" :data="thermObjLow" />
     <Thermometer :show="showAni" :data="thermObjZero" />
     <Thermometer :show="showAni" :data="thermObjCen" />
