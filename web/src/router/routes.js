@@ -1,4 +1,7 @@
-import homeIndex from '@/views/index.vue'
+import homeIndex from '@/views/index.vue';
+import animation from './modules/animation';
+import base from './modules/base';
+// 配置项目中没有涉及权限的公共路由
 const routes = [
     {
         name: 'index',
@@ -18,15 +21,10 @@ const routes = [
         //     },
         // ],
     },
-    {
-        path: "/animation/therm",
-        name: "therm",
-        component: () => import("@/views/animation/therm.vue"),
-        meta: {
-            title: "温度计图表",
-        },
-    },
-
+    ...animation,
+    ...base,
 ];
 
 export default routes
+
+
