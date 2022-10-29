@@ -1,6 +1,7 @@
 import homeIndex from '@/views/index.vue';
 import animation from './modules/animation';
 import base from './modules/base';
+import gsap from './modules/gsap';
 // 配置项目中没有涉及权限的公共路由
 const routes = [
     {
@@ -23,6 +24,7 @@ const routes = [
     },
     ...animation,
     ...base,
+    ...gsap
 ];
 
 export default routes
