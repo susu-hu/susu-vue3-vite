@@ -14,8 +14,8 @@ https://gitee.com/susuhhhhhh/susu-vue3-vite.git
 #### 说明
 - [x] 1、lottie-web实现lottie动画
 - [x] 2、css实现温度计图表
-
-
+- [x] 3、gsap数字滚动
+- [x] 4、echart-立体柱状图
 
 #### 参与贡献
 
