@@ -6,7 +6,6 @@ const router = createRouter({
   routes,
 });
 router.beforeEach((to, from, next) => {
-  console.log(to, from);
   const title = "苏苏就是小苏苏哇" + (to.meta.title ? "-" + to.meta.title : "");
   document.title = title;
   next();
