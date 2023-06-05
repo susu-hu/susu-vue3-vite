@@ -7,6 +7,16 @@
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import * as echarts from "echarts";
 import { debounce } from "@/utils/tools.js";
+const themeColor = {
+  shadowColor: "rgba(0,204,169,0.95)",
+  lineColor: "#00CCA9",
+  itemStyleColor: "#021E47",
+  areaStyle: [
+    "rgba(0,204,169,0.3)",
+    "rgba(0, 204, 170, 0.5)",
+    "rgba(0,204,169,0)",
+  ],
+};
 const xData = [
   "0:00",
   "2:00",
@@ -44,14 +54,13 @@ const resizeChart = () => {
 const renderChart = () => {
   const option = {
     animationDuration: 3000,
-    color: ["#ec5d5f", "#f2cb58", "#64a0c8"],
     tooltip: {
       trigger: "axis",
-      backgroundColor: "rgba(0,0,0,.5)",
+      backgroundColor: "rgba(0,0,0,.5)", //tooltip背景色
       axisPointer: {
         type: "cross",
         label: {
-          backgroundColor: "rgba(0,0,0,.5)",
+          backgroundColor: "rgba(0,0,0,.5)", //label标签颜色
         },
       },
       textStyle: {
@@ -81,7 +90,7 @@ const renderChart = () => {
           rotate: 30, //坐标轴内容过长旋转
           interval: 0,
           lineStyle: {
-            color: "#636E7C",
+            color: "#636E7C", // x轴线条颜色
           },
         },
         axisLabel: {
@@ -146,31 +155,31 @@ const renderChart = () => {
           shadowOffsetX: 0, // 折线的X偏移
           shadowOffsetY: 3, // 折线的Y偏移
           shadowBlur: 4, // 折线模糊
-          shadowColor: "rgba(220,120,40,0.95)", //阴影色
-          color: "#DC7828", //折线颜色
+          shadowColor: "rgba(0,204,169,0.95)", //"rgba(220,120,40,0.95)", //阴影色
+          color: "#00CCA9", //"#DC7828", //折线颜色
         },
         showSymbol: true,
         symbol: "circle",
         symbolSize: 8,
         itemStyle: {
-          color: "#2f334d",
+          color: "#021E47", //"#021E47"//实心的圆点的背景颜色------圆透明！！！！！！！
           borderWidth: 1,
-          borderColor: "#DC7828",
+          borderColor: "#00CCA9", //"#DC7828",//与折线颜色一致
         },
         areaStyle: {
           // 颜色渐变函数 前四个参数分别表示四个位置依次为---右下左上
           color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
             {
               offset: 1,
-              color: "rgba(220,120,40,0.3)",
+              color: "rgba(0,204,169,0.3)rgba(0,204,169,0.3)", //"rgba(220,120,40,0.3)",
             },
             {
               offset: 0.74,
-              color: "rgba(220,120,40,0.26)",
+              color: "rgba(0, 204, 170, 0.5)", //rgba(220,120,40,0.26)
             },
             {
               offset: 0,
-              color: "rgba(220,120,40,0)",
+              color: "rgba(0,204,169,0)", //rgba(220,120,40,0)
             },
           ]),
         },
