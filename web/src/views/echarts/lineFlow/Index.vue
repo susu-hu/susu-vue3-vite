@@ -8,13 +8,21 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 import * as echarts from "echarts";
 import { debounce } from "@/utils/tools.js";
 const themeColor = {
-  shadowColor: "rgba(0,204,169,0.95)",
-  lineColor: "#00CCA9",
+  // shadowColor: "rgba(0,204,169,0.95)",
+  // lineColor: "#00CCA9",
+  // itemStyleColor: "#021E47",
+  // areaStyle: [
+  //   "rgba(0,204,169,0.3)",
+  //   "rgba(0, 204, 170, 0.5)",
+  //   "rgba(0,204,169,0)",
+  // ],
+  shadowColor: "rgba(220,120,40,0.95)",
+  lineColor: "#DC7828",
   itemStyleColor: "#021E47",
   areaStyle: [
-    "rgba(0,204,169,0.3)",
-    "rgba(0, 204, 170, 0.5)",
-    "rgba(0,204,169,0)",
+    "rgba(220,120,40,0.3)",
+    "rgba(220,120,40,0.5)",
+    "rgba(220,120,40,0)",
   ],
 };
 const xData = [
@@ -155,31 +163,31 @@ const renderChart = () => {
           shadowOffsetX: 0, // 折线的X偏移
           shadowOffsetY: 3, // 折线的Y偏移
           shadowBlur: 4, // 折线模糊
-          shadowColor: "rgba(0,204,169,0.95)", //"rgba(220,120,40,0.95)", //阴影色
-          color: "#00CCA9", //"#DC7828", //折线颜色
+          shadowColor: themeColor.shadowColor, //阴影色
+          color: themeColor.lineColor, //折线颜色
         },
         showSymbol: true,
         symbol: "circle",
         symbolSize: 8,
         itemStyle: {
-          color: "#021E47", //"#021E47"//实心的圆点的背景颜色------圆透明！！！！！！！
+          color: themeColor.itemStyleColor, //实心的圆点的背景颜色------圆透明！！！！！！！
           borderWidth: 1,
-          borderColor: "#00CCA9", //"#DC7828",//与折线颜色一致
+          borderColor: themeColor.lineColor, //与折线颜色一致
         },
         areaStyle: {
           // 颜色渐变函数 前四个参数分别表示四个位置依次为---右下左上
           color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
             {
               offset: 1,
-              color: "rgba(0,204,169,0.3)rgba(0,204,169,0.3)", //"rgba(220,120,40,0.3)",
+              color: themeColor.areaStyle[0],
             },
             {
               offset: 0.74,
-              color: "rgba(0, 204, 170, 0.5)", //rgba(220,120,40,0.26)
+              color: themeColor.areaStyle[1],
             },
             {
               offset: 0,
-              color: "rgba(0,204,169,0)", //rgba(220,120,40,0)
+              color: themeColor.areaStyle[2],
             },
           ]),
         },
