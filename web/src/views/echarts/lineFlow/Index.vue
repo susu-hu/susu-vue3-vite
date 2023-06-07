@@ -8,22 +8,22 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 import * as echarts from "echarts";
 import { debounce } from "@/utils/tools.js";
 const themeColor = {
-  // shadowColor: "rgba(0,204,169,0.95)",
-  // lineColor: "#00CCA9",
-  // itemStyleColor: "#021E47",
-  // areaStyle: [
-  //   "rgba(0,204,169,0.3)",
-  //   "rgba(0, 204, 170, 0.5)",
-  //   "rgba(0,204,169,0)",
-  // ],
-  shadowColor: "rgba(220,120,40,0.95)",
-  lineColor: "#DC7828",
+  shadowColor: "rgba(0,204,169,0.95)",
+  lineColor: "#00CCA9",
   itemStyleColor: "#021E47",
   areaStyle: [
-    "rgba(220,120,40,0.3)",
-    "rgba(220,120,40,0.5)",
-    "rgba(220,120,40,0)",
+    "rgba(0,204,169,0.3)",
+    "rgba(0, 204, 170, 0.5)",
+    "rgba(0,204,169,0)",
   ],
+  // shadowColor: "rgba(220,120,40,0.95)",
+  // lineColor: "#DC7828",
+  // itemStyleColor: "#021E47",
+  // areaStyle: [
+  //   "rgba(220,120,40,0.3)",
+  //   "rgba(220,120,40,0.5)",
+  //   "rgba(220,120,40,0)",
+  // ],
 };
 const xData = [
   "0:00",
