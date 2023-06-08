@@ -11,7 +11,6 @@ export const BASIC_OPTION = {
   ],
   legend: {
     type: "scroll",
-    // data: legendData,
     icon: "roundRect",
     padding: fitChartSize(5),
     itemGap: fitChartSize(20),
@@ -41,18 +40,6 @@ export const BASIC_OPTION = {
       color: "#FFFFFF",
     },
   },
-  //   tooltip: {
-  //     formatter: (params) => {
-  //       if (params.seriesName !== "mouseoutSeries") {
-  //         return `${
-  //           params.seriesName
-  //         }<br/><span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:${
-  //           params.color
-  //         };"></span>${option.series[params.seriesIndex].pieData.value}`;
-  //       }
-  //       return "";
-  //     },
-  //   },
   xAxis3D: {
     min: -1,
     max: 1,
