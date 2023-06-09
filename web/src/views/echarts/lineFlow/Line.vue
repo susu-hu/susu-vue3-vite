@@ -21,22 +21,22 @@ const props = defineProps({
   },
 });
 const themeColor = {
-  // shadowColor: "rgba(0,204,169,0.95)",
-  // lineColor: "#00CCA9",
-  // itemStyleColor: "#021E47",
-  // areaStyle: [
-  //   "rgba(0,204,169,0.3)",
-  //   "rgba(0, 204, 170, 0.5)",
-  //   "rgba(0,204,169,0)",
-  // ],
-  shadowColor: "rgba(220,120,40,0.95)",
-  lineColor: "#DC7828",
+  shadowColor: "rgba(0,204,169,0.95)",
+  lineColor: "#00CCA9",
   itemStyleColor: "#021E47",
   areaStyle: [
-    "rgba(220,120,40,0.3)",
-    "rgba(220,120,40,0.5)",
-    "rgba(220,120,40,0)",
+    "rgba(0,204,169,0.3)",
+    "rgba(0, 204, 170, 0.5)",
+    "rgba(0,204,169,0)",
   ],
+  // shadowColor: "rgba(220,120,40,0.95)",
+  // lineColor: "#DC7828",
+  // itemStyleColor: "#021E47",
+  // areaStyle: [
+  //   "rgba(220,120,40,0.3)",
+  //   "rgba(220,120,40,0.5)",
+  //   "rgba(220,120,40,0)",
+  // ],
 };
 let datacoords = [
   {
@@ -76,24 +76,12 @@ const getFullOptions = () => {
     ],
     series: [
       {
-        // name: "苏苏的折线图",
-        // type: "line",
-        // smooth: 0, //可设置弧度，0-1
         lineStyle: {
-          // width: 1.5,
-          // type: "solid",
-          // shadowOffsetX: 0, // 折线的X偏移
-          // shadowOffsetY: 3, // 折线的Y偏移
-          // shadowBlur: 4, // 折线模糊
           shadowColor: themeColor.shadowColor, //阴影色
           color: themeColor.lineColor, //折线颜色
         },
-        // showSymbol: true,
-        // symbol: "circle",
-        // symbolSize: 8,
         itemStyle: {
-          color: themeColor.itemStyleColor, //实心的圆点的背景颜色------圆透明！！！！！！！
-          // borderWidth: 1,
+          color: themeColor.itemStyleColor,
           borderColor: themeColor.lineColor, //与折线颜色一致
         },
         areaStyle: {
@@ -113,32 +101,10 @@ const getFullOptions = () => {
             },
           ]),
         },
-        // emphasis: {
-        //   focus: "series",
-        // },
         data: props.data.yData,
       },
-      // 以下代码为流光效果-配置项代码
+      // 以下代码为流光效果
       {
-        // polyline: true,
-        // showSymbol: false,
-        // name: "流动光线",
-        // type: "lines",
-        // coordinateSystem: "cartesian2d",
-        // effect: {
-        //   trailLength: 0.3,
-        //   show: true,
-        //   period: 6,
-        //   symbolSize: 4,
-        //   loop: true,
-        // },
-        // lineStyle: {
-        //   color: "#fff",
-        //   width: 0,
-        //   opacity: 0,
-        //   curveness: 0,
-        //   type: "dashed",
-        // },
         data: datacoords,
       },
     ],
