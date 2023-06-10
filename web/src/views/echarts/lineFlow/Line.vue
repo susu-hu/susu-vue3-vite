@@ -1,7 +1,5 @@
 <template>
-  <div class="container">
-    <div ref="Chart" class="chart"></div>
-  </div>
+  <div ref="Chart" class="chart" :style="{ '--w': width, '--h': height }"></div>
 </template>
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
@@ -18,6 +16,14 @@ const props = defineProps({
   extraOption: {
     type: Object,
     default: () => {},
+  },
+  width: {
+    type: Number,
+    default: 600,
+  },
+  height: {
+    type: Number,
+    default: 300,
   },
 });
 const themeColor = {
@@ -118,17 +124,8 @@ onBeforeUnmount(() => {
 });
 </script>
 <style lang="less" scoped>
-.container {
-  width: 600px;
-  height: 300px;
-  position: relative;
-  margin: 40px auto;
-}
-
 .chart {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 1;
+  width: calc(1px * var(--w));
+  height: calc(1px * var(--h));
 }
 </style>

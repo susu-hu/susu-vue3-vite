@@ -1,14 +1,6 @@
 import { fitChartSize } from "@/utils/echartSize";
 export const BASIC_OPTION = {
-  color: [
-    "#2B99EE",
-    "#EB7A6A",
-    "#4FED7D",
-    "#47D8E1",
-    "#E1CD47",
-    "#4F5AED",
-    "#E19D47",
-  ],
+  color: ["red", "pink", "green", "#47D8E1", "#E1CD47", "#4F5AED", "#E19D47"],
   legend: {
     type: "scroll",
     icon: "roundRect",

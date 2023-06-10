@@ -26,7 +26,15 @@ const data = [
   },
 ];
 const extraOption = {
-  color: ["red", "pink", "green", "#47D8E1", "#E1CD47", "#4F5AED", "#E19D47"],
+  color: [
+    "#2B99EE",
+    "#EB7A6A",
+    "#4FED7D",
+    "#47D8E1",
+    "#E1CD47",
+    "#4F5AED",
+    "#E19D47",
+  ],
 };
 </script>
 <style lang="less" scoped></style>
