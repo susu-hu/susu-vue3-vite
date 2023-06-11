@@ -1,5 +1,7 @@
 <template>
-  <LineFlow :data="data" :extra-option="extraOption" />
+  <section class="flex-row j_c">
+    <LineFlow :data="data" :extra-option="extraOption" />
+  </section>
 </template>
 <script setup>
 import LineFlow from "./Line.vue";
@@ -19,4 +21,8 @@ const data = {
 };
 const extraOption = {};
 </script>
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+section {
+  margin: 40px auto;
+}
+</style>
