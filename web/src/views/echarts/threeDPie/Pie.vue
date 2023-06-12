@@ -1,14 +1,11 @@
 <template>
-  <div class="container" :data-num="content">
-    <div ref="Chart" class="chart"></div>
-  </div>
+  <div ref="Chart" class="chart" :style="{ '--w': width, '--h': height }"></div>
 </template>
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import "echarts-gl";
 import * as echarts from "echarts";
 import { debounce } from "@/utils/tools.js";
-import { fitChartSize } from "@/utils/echartSize";
 import { merge } from "lodash";
 import { BASIC_OPTION } from "./defaultOption";
 const props = defineProps({
@@ -21,8 +18,15 @@ const props = defineProps({
     type: Object,
     default: () => {},
   },
+  width: {
+    type: Number,
+    default: 300,
+  },
+  height: {
+    type: Number,
+    default: 300,
+  },
 });
-const content = "3D环形饼图";
 const Chart = ref(null);
 let mChart = null;
 onMounted(() => {
@@ -328,40 +332,8 @@ onBeforeUnmount(() => {
 });
 </script>
 <style lang="less" scoped>
-.container {
-  width: 500px;
-  height: 264px;
-  position: relative;
-}
-
-.container::after {
-  content: "";
-  position: absolute;
-  width: 290px;
-  height: 198px;
-  background: url("@/assets/images/shift-bg.png") no-repeat;
-  background-size: 100% 100%;
-  left: calc(50% - 145px);
-  bottom: 1%;
-}
-
-.container::before {
-  content: attr(data-num);
-  position: absolute;
-  font-size: 18px;
-  font-family: AlibabaPuHuiTiB;
-  color: #ffffff;
-  line-height: 42px;
-  text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
-  left: 50%;
-  transform: translate(-50%);
-  top: 30%;
-}
-
 .chart {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 1;
+  width: calc(1px * var(--w));
+  height: calc(1px * var(--h));
 }
 </style>

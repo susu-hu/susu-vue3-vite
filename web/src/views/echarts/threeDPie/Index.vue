@@ -1,8 +1,11 @@
 <template>
-  <Pie :data="data" :extra-option="extraOption" />
+  <div class="container" :data-num="content">
+    <Pie :data="data" :extra-option="extraOption" :width="500" :height="264" />
+  </div>
 </template>
 <script setup>
 import Pie from "./Pie.vue";
+const content = "3D环形饼图";
 const data = [
   {
     name: "测试1",
@@ -37,4 +40,35 @@ const extraOption = {
   ],
 };
 </script>
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.container {
+  width: 500px;
+  height: 264px;
+  position: relative;
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  width: 290px;
+  height: 198px;
+  background: url("@/assets/images/shift-bg.png") no-repeat;
+  background-size: 100% 100%;
+  left: calc(50% - 145px);
+  bottom: 1%;
+  z-index: -1;
+}
+
+.container::before {
+  content: attr(data-num);
+  position: absolute;
+  font-size: 18px;
+  font-family: AlibabaPuHuiTiB;
+  color: #ffffff;
+  line-height: 42px;
+  text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+  left: 50%;
+  transform: translate(-50%);
+  top: 30%;
+}
+</style>
