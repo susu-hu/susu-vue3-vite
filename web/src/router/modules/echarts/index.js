@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-12-29 20:55:33
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2023-07-30 21:31:04
+ * @LastEditTime: 2023-08-05 23:27:06
  * @FilePath: \web\src\router\modules\echarts\index.js
  * @Description: echarts图表
  */
@@ -13,7 +13,7 @@ export default [
     meta: {
       title: "",
     },
-    component: () => import("@/views/echarts/ThreeDBar.vue"),
+    component: () => import("@/views/echarts/threeDBar/Index.vue"),
   },
   {
     path: "/echarts/threeDPie",
