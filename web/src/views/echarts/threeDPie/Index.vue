@@ -45,6 +45,7 @@ const extraOption = {
   width: 500px;
   height: 264px;
   position: relative;
+  margin: 40px auto;
 }
 
 .container::after {
