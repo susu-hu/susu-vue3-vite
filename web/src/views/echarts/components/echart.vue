@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2023-08-07 11:50:13
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2023-08-07 16:04:16
+ * @LastEditTime: 2023-08-07 21:33:18
  * @FilePath: \web\src\views\echarts\components\echart.vue
  * @Description: 通用echarts封装
 -->

@@ -1,4 +1,3 @@
-import * as echarts from "echarts";
 import { fitChartSize } from "@/utils/echartSize";
 export const BASIC_OPTION = {
   animationDuration: 3000,

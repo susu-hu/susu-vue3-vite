@@ -1,4 +1,5 @@
 import * as echarts from "echarts";
+import { fitChartSize } from "@/utils/echartSize";
 export const BASIC_OPTION = {
   animationDuration: 3000,
   tooltip: {
@@ -12,7 +13,7 @@ export const BASIC_OPTION = {
     },
     textStyle: {
       color: "#fff",
-      fontSize: 14,
+      fontSize: fitChartSize(14),
     },
   },
   grid: {
@@ -27,14 +28,13 @@ export const BASIC_OPTION = {
       nameGap: 3, //坐标轴名称与轴线之间的距离。
       nameTextStyle: {
         color: "rgba(255,255,255,.8)",
-        fontSize: 12,
+        fontSize: fitChartSize(12),
       },
       type: "category",
-      //   data: xData,
       boundaryGap: false, //从0开始
       axisLine: {
         //坐标轴线颜色
-        rotate: 30, //坐标轴内容过长旋转
+        rotate: fitChartSize(30), //坐标轴内容过长旋转
         interval: 0,
         lineStyle: {
           color: "#636E7C", // x轴线条颜色
@@ -42,7 +42,7 @@ export const BASIC_OPTION = {
       },
       axisLabel: {
         showMaxLabel: true,
-        fontSize: 12,
+        fontSize: fitChartSize(12),
         color: "rgba(255,255,255,.8)", //坐标的字体颜色
       },
       axisTick: {
@@ -55,7 +55,7 @@ export const BASIC_OPTION = {
     {
       name: "折线流光图",
       type: "value",
-      nameGap: 20,
+      nameGap: fitChartSize(20),
       min: 0,
       max: function (value) {
         return Math.ceil(value.max / 5) * 5;
@@ -64,7 +64,7 @@ export const BASIC_OPTION = {
       nameTextStyle: {
         //坐标轴字体
         color: "rgba(255,255,255,.89)",
-        fontSize: 12,
+        fontSize: fitChartSize(12),
       },
       splitLine: {
         //网格线颜色
@@ -87,7 +87,7 @@ export const BASIC_OPTION = {
       },
       axisLabel: {
         color: "rgba(255,255,255,.8)", //坐标的字体颜色
-        fontSize: 12,
+        fontSize: fitChartSize(12),
       },
     },
   ],
@@ -97,20 +97,20 @@ export const BASIC_OPTION = {
       type: "line",
       smooth: 0, //可设置弧度，0-1
       lineStyle: {
-        width: 1.5,
+        width: fitChartSize(1.5),
         type: "solid",
         shadowOffsetX: 0, // 折线的X偏移
-        shadowOffsetY: 3, // 折线的Y偏移
-        shadowBlur: 4, // 折线模糊
+        shadowOffsetY: fitChartSize(3), // 折线的Y偏移
+        shadowBlur: fitChartSize(4), // 折线模糊
         shadowColor: "rgba(220,120,40,0.95)", //阴影色
         color: "#DC7828", //折线颜色
       },
       showSymbol: true,
       symbol: "circle",
-      symbolSize: 8,
+      symbolSize: fitChartSize(8),
       itemStyle: {
         color: "#021E47", //实心的圆点的背景颜色------圆透明！！！！！！！
-        borderWidth: 1,
+        borderWidth: fitChartSize(1),
         borderColor: "#DC7828", //与折线颜色一致
       },
       areaStyle: {
@@ -133,9 +133,8 @@ export const BASIC_OPTION = {
       emphasis: {
         focus: "series",
       },
-      //   data: yData,
     },
-    // 以下代码为流光效果-配置项代码
+    //流光效果-配置项代码
     {
       polyline: true,
       showSymbol: false,
@@ -145,8 +144,8 @@ export const BASIC_OPTION = {
       effect: {
         trailLength: 0.3,
         show: true,
-        period: 6,
-        symbolSize: 4,
+        period: fitChartSize(6),
+        symbolSize: fitChartSize(4),
         loop: true,
       },
       lineStyle: {
@@ -156,7 +155,6 @@ export const BASIC_OPTION = {
         curveness: 0,
         type: "dashed",
       },
-      //   data: datacoords,
     },
   ],
 };

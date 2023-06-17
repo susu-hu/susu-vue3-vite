@@ -126,7 +126,7 @@ const getFullOptions = () => {
       },
     ],
   };
-  console.log(merge({}, BASIC_OPTION, o, props.extraOption));
+  // console.log(merge({}, BASIC_OPTION, o, props.extraOption));
   return merge({}, BASIC_OPTION, o, props.extraOption);
 };
 </script>
