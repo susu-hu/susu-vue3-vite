@@ -7,7 +7,7 @@
   />
 </template>
 <script setup>
-import Echart from "../components/echart.vue";
+import Echart from "../components/Echart.vue";
 import "echarts-gl";
 import { merge } from "lodash";
 import { BASIC_OPTION } from "./defaultOption";
