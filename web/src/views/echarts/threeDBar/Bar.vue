@@ -75,7 +75,7 @@ const getFullOptions = () => {
       });
     }
   });
-  let o = {
+  let _option = {
     xAxis: {
       data: props.data.xData,
     },
@@ -126,7 +126,7 @@ const getFullOptions = () => {
       },
     ],
   };
-  // console.log(merge({}, BASIC_OPTION, o, props.extraOption));
-  return merge({}, BASIC_OPTION, o, props.extraOption);
+  // console.log(merge({}, BASIC_OPTION, _option, props.extraOption));
+  return merge({}, BASIC_OPTION, _option, props.extraOption);
 };
 </script>
