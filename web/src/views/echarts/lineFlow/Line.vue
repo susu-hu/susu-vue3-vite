@@ -25,34 +25,34 @@ const props = defineProps({
     default: 300,
   },
 });
-const themeColor = {
-  shadowColor: "rgba(0,204,169,0.95)",
-  lineColor: "#00CCA9",
-  itemStyleColor: "#021E47",
-  areaStyle: [
-    "rgba(0,204,169,0.3)",
-    "rgba(0, 204, 170, 0.5)",
-    "rgba(0,204,169,0)",
-  ],
-  // shadowColor: "rgba(220,120,40,0.95)",
-  // lineColor: "#DC7828",
-  // itemStyleColor: "#021E47",
-  // areaStyle: [
-  //   "rgba(220,120,40,0.3)",
-  //   "rgba(220,120,40,0.5)",
-  //   "rgba(220,120,40,0)",
-  // ],
-};
-let datacoords = [
-  {
-    coords: [],
-  },
-];
-for (let i = 0; i < props.data.xData.length; i++) {
-  datacoords[0].coords.push([props.data.xData[i], props.data.yData[i]]);
-}
 const getFullOptions = () => {
-  let o = {
+  const themeColor = {
+    shadowColor: "rgba(0,204,169,0.95)",
+    lineColor: "#00CCA9",
+    itemStyleColor: "#021E47",
+    areaStyle: [
+      "rgba(0,204,169,0.3)",
+      "rgba(0, 204, 170, 0.5)",
+      "rgba(0,204,169,0)",
+    ],
+    // shadowColor: "rgba(220,120,40,0.95)",
+    // lineColor: "#DC7828",
+    // itemStyleColor: "#021E47",
+    // areaStyle: [
+    //   "rgba(220,120,40,0.3)",
+    //   "rgba(220,120,40,0.5)",
+    //   "rgba(220,120,40,0)",
+    // ],
+  };
+  let datacoords = [
+    {
+      coords: [],
+    },
+  ];
+  for (let i = 0; i < props.data.xData.length; i++) {
+    datacoords[0].coords.push([props.data.xData[i], props.data.yData[i]]);
+  }
+  let _option = {
     xAxis: [
       {
         data: props.data.xData,
@@ -93,7 +93,6 @@ const getFullOptions = () => {
       },
     ],
   };
-  console.log(merge({}, BASIC_OPTION, o, props.extraOption));
-  return merge({}, BASIC_OPTION, o, props.extraOption);
+  return merge({}, BASIC_OPTION, _option, props.extraOption);
 };
 </script>
