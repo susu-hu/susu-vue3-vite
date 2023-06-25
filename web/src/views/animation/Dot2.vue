@@ -11,10 +11,28 @@
   .logo {
     width: 245px;
     height: 284px;
-    background: url("@/assets/images/ani/logoo.png") no-repeat;
-    background-size: 100% 100%;
     transform-style: preserve-3d;
     position: relative;
+    &::after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      background: url("@/assets/images/ani/logoo.png") no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      animation: douce 2s infinite linear;
+      @keyframes douce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+    }
   }
   .line {
     width: 288px;
