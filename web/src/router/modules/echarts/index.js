@@ -17,7 +17,7 @@ export default [
   },
   {
     path: "/echarts/threeDPie",
-    name: "threeDBar",
+    name: "threeDPie",
     meta: {
       title: "",
     },

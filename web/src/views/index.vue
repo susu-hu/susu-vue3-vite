@@ -1,8 +1,8 @@
 <!--
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-10-10 00:18:53
- * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-10-19 21:51:42
+ * @LastEditors: 胡苏珍 1628469970@qq.com
+ * @LastEditTime: 2023-07-26 11:50:23
  * @FilePath: \web\src\views\index.vue
  * @Description: 首页
 -->
@@ -32,6 +32,7 @@
       />
     </div>
   </div>
+  <div @click="jump">跳转</div>
 </template>
 
 <script setup>
@@ -42,6 +43,11 @@ import dataJson4 from "@/assets/json/data4.json";
 import dataJson5 from "@/assets/json/data5.json";
 import dataJson6 from "@/assets/json/data6.json";
 import LottieAni from "@/components/lottie.vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+const jump = () => {
+  router.push({ name: "threeDBar" });
+};
 </script>
 
 <style scoped lang="less">
