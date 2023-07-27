@@ -1,6 +1,6 @@
 <template>
   <div class="container" :data-num="totalNum">
-    <div ref="shiftPieChart" class="chart"></div>
+    <div ref="Chart" class="chart"></div>
   </div>
 </template>
 <script setup>
@@ -11,23 +11,31 @@ import { debounce } from "@/utils/tools.js";
 import { fitChartSize } from "@/utils/echartSize";
 const data = [
   {
-    name: "早早早",
+    name: "测试1",
     value: 160,
   },
   {
-    name: "中中中",
+    name: "测试2",
     value: 244,
   },
   {
-    name: "晚晚晚",
+    name: "测试3",
     value: 332,
+  },
+  {
+    name: "测试4",
+    value: 400,
+  },
+  {
+    name: "测试5",
+    value: 19,
   },
 ];
 const totalNum = 300;
-const shiftPieChart = ref(null);
+const Chart = ref(null);
 let mChart = null;
 onMounted(() => {
-  mChart = echarts.init(shiftPieChart.value);
+  mChart = echarts.init(Chart.value);
   renderChart();
   window.addEventListener("resize", debounce(resizeChart, 300));
 });
@@ -38,43 +46,23 @@ const resizeChart = () => {
   }
 };
 // 渲染图表
-// const renderChart = () => {
-//   let option = getPie3D(
-//     [
-//       {
-//         name: "早早早",
-//         value: 160,
-//       },
-//       {
-//         name: "中中中",
-//         value: 244,
-//       },
-//       {
-//         name: "晚晚晚",
-//         value: 332,
-//       },
-//     ],
-//     0.75,
-//   );
-//   if (option && typeof option === "object") {
-//     mChart.setOption(option);
-//   }
-// };
-function renderChart() {
+const renderChart = () => {
   let option = getPie3D(data, 0.75);
   if (option && typeof option === "object") {
     mChart.setOption(option);
   }
-}
+  // 添加事件监听
+  listenEvent(mChart, option);
+};
 // 生成扇形的曲面参数方程
-function getParametricEquation(
+const getParametricEquation = (
   startRatio,
   endRatio,
   isSelected,
   isHovered,
   k,
   h,
-) {
+) => {
   // 计算
   const midRatio = (startRatio + endRatio) / 2;
   const startRadian = startRatio * Math.PI * 2;
@@ -140,9 +128,9 @@ function getParametricEquation(
       return Math.sin(v) > 0 ? 1 * h * 0.1 : -1;
     },
   };
-}
+};
 // 生成模拟 3D 饼图的配置项
-function getPie3D(pieData, internalDiameterRatio) {
+const getPie3D = (pieData, internalDiameterRatio) => {
   const series = [];
   // 总和
   let sumValue = 0;
@@ -303,8 +291,121 @@ function getPie3D(pieData, internalDiameterRatio) {
     series,
   };
   return option;
-}
+};
 
+const listenEvent = (myChart, option) => {
+  let hoveredIndex = "";
+  // 监听 mouseover，近似实现高亮（放大）效果
+  myChart.on("mouseover", (params) => {
+    // 准备重新渲染扇形所需的参数
+    let isSelected;
+    let isHovered;
+    let startRatio;
+    let endRatio;
+    let k;
+    let i;
+    // 如果触发 mouseover 的扇形当前已高亮，则不做操作
+    if (hoveredIndex === params.seriesIndex) {
+      return;
+      // 否则进行高亮及必要的取消高亮操作
+    } else {
+      // 如果当前有高亮的扇形，取消其高亮状态（对 option 更新）
+      if (hoveredIndex !== "") {
+        // 从 option.series 中读取重新渲染扇形所需的参数，将是否高亮设置为 false。
+        isSelected = option.series[hoveredIndex].pieStatus.selected;
+        isHovered = false;
+        startRatio = option.series[hoveredIndex].pieData.startRatio;
+        endRatio = option.series[hoveredIndex].pieData.endRatio;
+        k = option.series[hoveredIndex].pieStatus.k;
+        i =
+          option.series[hoveredIndex].pieData.value ===
+          option.series[0].pieData.value
+            ? 35
+            : 10;
+        // 对当前点击的扇形，执行取消高亮操作（对 option 更新）
+        option.series[hoveredIndex].parametricEquation = getParametricEquation(
+          startRatio,
+          endRatio,
+          isSelected,
+          isHovered,
+          k,
+          i,
+        );
+        option.series[hoveredIndex].pieStatus.hovered = isHovered;
+        // 将此前记录的上次选中的扇形对应的系列号 seriesIndex 清空
+        hoveredIndex = "";
+      }
+      // 如果触发 mouseover 的扇形不是透明圆环，将其高亮（对 option 更新）
+      if (params.seriesName !== "mouseoutSeries") {
+        // 从 option.series 中读取重新渲染扇形所需的参数，将是否高亮设置为 true。
+        isSelected = option.series[params.seriesIndex].pieStatus.selected;
+        isHovered = true;
+        startRatio = option.series[params.seriesIndex].pieData.startRatio;
+        endRatio = option.series[params.seriesIndex].pieData.endRatio;
+        k = option.series[params.seriesIndex].pieStatus.k;
+        // 对当前点击的扇形，执行高亮操作（对 option 更新）
+        option.series[params.seriesIndex].parametricEquation =
+          getParametricEquation(
+            startRatio,
+            endRatio,
+            isSelected,
+            isHovered,
+            k,
+            option.series[params.seriesIndex].pieData.value + 5,
+          );
+        option.series[params.seriesIndex].pieStatus.hovered = isHovered;
+        // 记录上次高亮的扇形对应的系列号 seriesIndex
+        hoveredIndex = params.seriesIndex;
+      }
+      // 使用更新后的 option，渲染图表
+      myChart.setOption(option);
+    }
+  });
+  // 修正取消高亮失败的 bug
+  myChart.on("globalout", () => {
+    if (hoveredIndex !== "") {
+      // 从 option.series 中读取重新渲染扇形所需的参数，将是否高亮设置为 true。
+      let isSelected = option.series[hoveredIndex].pieStatus.selected;
+      let isHovered = false;
+      let k = option.series[hoveredIndex].pieStatus.k;
+      let startRatio = option.series[hoveredIndex].pieData.startRatio;
+      let endRatio = option.series[hoveredIndex].pieData.endRatio;
+      // 对当前点击的扇形，执行取消高亮操作（对 option 更新）
+      let i =
+        option.series[hoveredIndex].pieData.value ===
+        option.series[0].pieData.value
+          ? 35
+          : 10;
+      option.series[hoveredIndex].parametricEquation = getParametricEquation(
+        startRatio,
+        endRatio,
+        isSelected,
+        isHovered,
+        k,
+        i,
+      );
+      option.series[hoveredIndex].pieStatus.hovered = isHovered;
+      // 将此前记录的上次选中的扇形对应的系列号 seriesIndex 清空
+      hoveredIndex = "";
+    }
+    // 使用更新后的 option，渲染图表
+    myChart.setOption(option);
+  });
+  // 监听legend点击事件
+  myChart.off("legendselectchanged");
+  myChart.on("legendselectchanged", (e) => {
+    myChart.setOption({
+      legend: { selected: { [e.name]: true } },
+    });
+    let curr = option.series.find((i) => i.name == e.name)?.pieData;
+    console.log("监听legend点击事件", curr);
+  });
+  // 监听点击事件，实现选中效果（单选）
+  myChart.on("click", (params) => {
+    let curr = option.series[params.seriesIndex]?.pieData;
+    console.log("监听点击事件，实现选中效果（单选）", curr);
+  });
+};
 // 传入数据生成 option
 onBeforeUnmount(() => {
   window.removeEventListener("resize", resizeChart);
@@ -315,6 +416,7 @@ onBeforeUnmount(() => {
   width: 500px;
   height: 264px;
   position: relative;
+  margin: 40px auto;
 }
 
 .container::after {
