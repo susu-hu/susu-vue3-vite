@@ -9,6 +9,15 @@ import "echarts-gl";
 import * as echarts from "echarts";
 import { debounce } from "@/utils/tools.js";
 import { fitChartSize } from "@/utils/echartSize";
+const COLORS = [
+  "#2B99EE",
+  "#EB7A6A",
+  "#4FED7D",
+  "#47D8E1",
+  "#E1CD47",
+  "#4F5AED",
+  "#E19D47",
+];
 const data = [
   {
     name: "测试1",
@@ -194,15 +203,7 @@ const getPie3D = (pieData, internalDiameterRatio) => {
   }
   // 准备待返回的配置项，把准备好的 legendData、series 传入。
   const option = {
-    color: [
-      "#2B99EE",
-      "#EB7A6A",
-      "#4FED7D",
-      "#47D8E1",
-      "#E1CD47",
-      "#4F5AED",
-      "#E19D47",
-    ],
+    color: COLORS,
     legend: {
       type: "scroll",
       data: legendData,
