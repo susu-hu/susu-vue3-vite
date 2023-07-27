@@ -1,5 +1,5 @@
 <template>
-  <div class="container" :data-num="totalNum">
+  <div class="container" :data-num="content">
     <div ref="Chart" class="chart"></div>
   </div>
 </template>
@@ -40,7 +40,7 @@ const data = [
     value: 19,
   },
 ];
-const totalNum = 300;
+const content = "3D环形饼图";
 const Chart = ref(null);
 let mChart = null;
 onMounted(() => {
@@ -418,6 +418,7 @@ onBeforeUnmount(() => {
   height: 264px;
   position: relative;
   margin: 40px auto;
+
 }
 
 .container::after {
@@ -435,7 +436,7 @@ onBeforeUnmount(() => {
   content: attr(data-num);
   position: absolute;
   font-size: 18px;
-  font-family: YouSheBiaoTiHei;
+  font-family: AlibabaPuHuiTiB;
   color: #ffffff;
   line-height: 42px;
   text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
