@@ -14,9 +14,9 @@ const props = defineProps({
     type: Number,
     default: 300,
   },
-  getFullOptions: {
-    type: Function,
-    default: () => () => {},
+  option: {
+    type: Object,
+    default: () => ({}),
   },
 });
 const Chart = ref(null);
@@ -34,10 +34,8 @@ const resizeChart = () => {
 };
 // 渲染图表
 const renderChart = () => {
-  // 传入数据生成 option
-  const option = props.getFullOptions();
-  if (option && typeof option === "object") {
-    mChart.setOption(option);
+  if (props.option && typeof props.option === "object") {
+    mChart.setOption(props.option);
   }
 };
 // 页面卸载
