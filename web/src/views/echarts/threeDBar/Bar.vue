@@ -47,6 +47,7 @@ const renderChart = () => {
     mChart.setOption(option);
   }
 };
+// 传入数据生成 option
 const getFullOptions = () => {
   let data = props.data.yData;
   let colorArr = ["#2886c6", "#50bfda", "#89e3ec"];
@@ -149,9 +150,10 @@ const getFullOptions = () => {
   console.log(merge({}, BASIC_OPTION, o, props.extraOption));
   return merge({}, BASIC_OPTION, o, props.extraOption);
 };
-// 传入数据生成 option
+// 页面卸载
 onBeforeUnmount(() => {
   window.removeEventListener("resize", resizeChart);
+  mChart.dispose(); //销毁echarts实例
 });
 </script>
 <style lang="less" scoped>
