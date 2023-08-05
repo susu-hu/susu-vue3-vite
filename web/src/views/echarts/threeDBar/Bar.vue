@@ -49,8 +49,8 @@ const renderChart = () => {
 };
 const getFullOptions = () => {
   let data = props.data.yData;
-  // let colorArr = ["#2886c6", "#50bfda", "#89e3ec"];
-  let colorArr = ["#eec06a", "#d9b470", "#d2bb90"];
+  let colorArr = ["#2886c6", "#50bfda", "#89e3ec"];
+  // let colorArr = ["#eec06a", "#d9b470", "#d2bb90"];
   let color = {
     type: "linear",
     x: 0,
@@ -79,14 +79,14 @@ const getFullOptions = () => {
   let barWidth = fitChartSize(18);
   let zeroData = [], //0值
     showData = []; //非0
-  data.filter((item) => {
+  data.map((item) => {
     if (item) {
       zeroData.push(1);
       showData.push(item);
     } else {
       zeroData.push(0);
       showData.push({
-        value: 1,
+        value: 0,
         itemStyle: {
           borderColor: "rgba(0,0,0,0)",
           borderWidth: 2,
