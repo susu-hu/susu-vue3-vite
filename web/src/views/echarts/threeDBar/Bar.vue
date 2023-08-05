@@ -42,9 +42,15 @@ const resizeChart = () => {
 };
 // 渲染图表
 const renderChart = () => {
-  // const option = getFullOptions();
+  const option = getFullOptions();
+  if (option && typeof option === "object") {
+    mChart.setOption(option);
+  }
+};
+const getFullOptions = () => {
   let data = props.data.yData;
-  let colorArr = ["#2886c6", "#50bfda", "#89e3ec"];
+  // let colorArr = ["#2886c6", "#50bfda", "#89e3ec"];
+  let colorArr = ["#eec06a", "#d9b470", "#d2bb90"];
   let color = {
     type: "linear",
     x: 0,
@@ -71,14 +77,14 @@ const renderChart = () => {
     ],
   };
   let barWidth = fitChartSize(18);
-  let constData = [];
-  let showData = [];
-  data.filter(function (item) {
+  let zeroData = [], //0值
+    showData = []; //非0
+  data.filter((item) => {
     if (item) {
-      constData.push(1);
+      zeroData.push(1);
       showData.push(item);
     } else {
-      constData.push(0);
+      zeroData.push(0);
       showData.push({
         value: 1,
         itemStyle: {
@@ -89,69 +95,9 @@ const renderChart = () => {
       });
     }
   });
-  const option = {
-    animationDuration: 3000,
-    tooltip: {
-      trigger: "axis",
-      backgroundColor: "rgba(0,0,0,.5)",
-      axisPointer: {
-        type: "cross",
-        label: {
-          backgroundColor: "rgba(0,0,0,.5)",
-        },
-      },
-      textStyle: {
-        color: "#fff",
-        fontSize: fitChartSize(14),
-      },
-    },
-    grid: {
-      left: "3%", //图表距边框的距离
-      right: "3%",
-      top: "4%",
-      bottom: "2%",
-      containLabel: true,
-    },
+  let o = {
     xAxis: {
       data: props.data.xData,
-      axisTick: {
-        show: false,
-      },
-      axisLine: {
-        //坐标轴线颜色
-        show: true,
-        lineStyle: {
-          color: "#636E7C",
-        },
-      },
-      axisLabel: {
-        color: "rgba(255,255,255,.8)", //坐标的字体颜色
-        fontSize: fitChartSize(12),
-      },
-    },
-    yAxis: {
-      axisLine: {
-        //坐标轴线颜色
-        show: true,
-        lineStyle: {
-          color: "#636E7C",
-        },
-      },
-      axisLabel: {
-        color: "rgba(255,255,255,.8)", //坐标的字体颜色
-        fontSize: fitChartSize(12),
-      },
-      axisTick: {
-        show: false,
-      },
-      splitLine: {
-        show: true,
-        lineStyle: {
-          color: "rgba(255,255,255,.25)",
-          type: "dashed",
-        },
-        //网格线颜色
-      },
     },
     series: [
       {
@@ -169,7 +115,7 @@ const renderChart = () => {
         z: 2,
         name: "数据",
         type: "pictorialBar",
-        data: constData,
+        data: zeroData,
         symbol: "diamond",
         symbolOffset: ["0%", "50%"],
         symbolSize: [barWidth, barWidth * 0.5],
@@ -200,12 +146,6 @@ const renderChart = () => {
       },
     ],
   };
-  if (option && typeof option === "object") {
-    mChart.setOption(option);
-  }
-};
-const getFullOptions = () => {
-  let o = {};
   console.log(merge({}, BASIC_OPTION, o, props.extraOption));
   return merge({}, BASIC_OPTION, o, props.extraOption);
 };
