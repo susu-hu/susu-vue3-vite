@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2023-08-07 11:50:13
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2023-08-07 21:33:18
+ * @LastEditTime: 2023-08-08 00:09:15
  * @FilePath: \web\src\views\echarts\components\echart.vue
  * @Description: 通用echarts封装
 -->
@@ -12,7 +12,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import * as echarts from "echarts";
-import { debounce } from "@/utils/tools.js";
+import { debounce } from "lodash";
 const props = defineProps({
   //图表宽度
   width: {
@@ -24,7 +24,7 @@ const props = defineProps({
     type: Number,
     default: 300,
   },
-  // 图片option
+  // 图表option
   option: {
     type: Object,
     default: () => ({}),
@@ -59,7 +59,6 @@ const renderChart = () => {
 };
 // 页面卸载
 onBeforeUnmount(() => {
-  console.log("页面离开");
   window.removeEventListener("resize", resizeChart);
   // 移出事件
   if (mChart.off) {
@@ -70,7 +69,6 @@ onBeforeUnmount(() => {
   }
   mChart && mChart.dispose(); //销毁echarts实例
   mChart = null;
-  console.log("lik", mChart);
 });
 </script>
 <style lang="less" scoped>
