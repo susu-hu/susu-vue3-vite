@@ -1,11 +1,14 @@
 <template>
-  <div ref="Chart" class="chart" :style="{ '--w': width, '--h': height }"></div>
+  <Echart
+    :width="width"
+    :height="height"
+    :option="getFullOptions()"
+    :chartEvents="chartEvents"
+  />
 </template>
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import Echart from "../components/echart.vue";
 import "echarts-gl";
-import * as echarts from "echarts";
-import { debounce } from "@/utils/tools.js";
 import { merge } from "lodash";
 import { BASIC_OPTION } from "./defaultOption";
 const props = defineProps({
@@ -27,29 +30,6 @@ const props = defineProps({
     default: 300,
   },
 });
-const Chart = ref(null);
-let mChart = null;
-onMounted(() => {
-  mChart = echarts.init(Chart.value);
-  renderChart();
-  window.addEventListener("resize", debounce(resizeChart, 300));
-});
-const resizeChart = () => {
-  if (mChart) {
-    mChart.resize();
-    renderChart();
-  }
-};
-// 渲染图表
-const renderChart = () => {
-  const option = getFullOptions();
-
-  if (option && typeof option === "object") {
-    mChart.setOption(option);
-  }
-  // 添加事件监听
-  listenEvent(mChart, option);
-};
 // 生成扇形的曲面参数方程
 const getParametricEquation = (
   startRatio,
@@ -213,7 +193,8 @@ const getFullOptions = () => {
   let o = getPie3D(props.data, 0.75);
   return merge({}, BASIC_OPTION, o, props.extraOption);
 };
-const listenEvent = (myChart, option) => {
+const chartEvents = (myChart, option) => {
+  myChart.off(); //先移除事件
   let hoveredIndex = "";
   // 监听 mouseover，近似实现高亮（放大）效果
   myChart.on("mouseover", (params) => {
@@ -312,7 +293,6 @@ const listenEvent = (myChart, option) => {
     myChart.setOption(option);
   });
   // 监听legend点击事件
-  myChart.off("legendselectchanged");
   myChart.on("legendselectchanged", (e) => {
     myChart.setOption({
       legend: { selected: { [e.name]: true } },
@@ -326,14 +306,4 @@ const listenEvent = (myChart, option) => {
     console.log("监听点击事件，实现选中效果（单选）", curr);
   });
 };
-// 传入数据生成 option
-onBeforeUnmount(() => {
-  window.removeEventListener("resize", resizeChart);
-});
 </script>
-<style lang="less" scoped>
-.chart {
-  width: calc(1px * var(--w));
-  height: calc(1px * var(--h));
-}
-</style>

@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2023-08-07 11:50:13
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2023-08-07 15:23:45
+ * @LastEditTime: 2023-08-07 16:04:16
  * @FilePath: \web\src\views\echarts\components\echart.vue
  * @Description: 通用echarts封装
 -->
@@ -14,17 +14,25 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 import * as echarts from "echarts";
 import { debounce } from "@/utils/tools.js";
 const props = defineProps({
+  //图表宽度
   width: {
     type: Number,
     default: 600,
   },
+  // 图表高度
   height: {
     type: Number,
     default: 300,
   },
+  // 图片option
   option: {
     type: Object,
     default: () => ({}),
+  },
+  // 图表事件监听
+  chartEvents: {
+    type: Function,
+    default: () => () => {},
   },
 });
 const Chart = ref(null);
@@ -44,10 +52,14 @@ const resizeChart = () => {
 const renderChart = () => {
   if (props.option && typeof props.option === "object") {
     mChart.setOption(props.option);
+    // 添加事件监听
+    props.chartEvents(mChart, props.option);
   }
+  console.log(mChart);
 };
 // 页面卸载
 onBeforeUnmount(() => {
+  console.log("页面离开");
   window.removeEventListener("resize", resizeChart);
   // 移出事件
   if (mChart.off) {
@@ -58,6 +70,7 @@ onBeforeUnmount(() => {
   }
   mChart && mChart.dispose(); //销毁echarts实例
   mChart = null;
+  console.log("lik", mChart);
 });
 </script>
 <style lang="less" scoped>
