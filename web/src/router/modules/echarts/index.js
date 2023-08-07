@@ -8,6 +8,14 @@
  */
 export default [
   {
+    path: "/echarts",
+    name: "echarts",
+    meta: {
+      title: "echart图表",
+    },
+    component: () => import("@/views/echarts/Index.vue"),
+  },
+  {
     path: "/echarts/threeDBar",
     name: "threeDBar",
     meta: {
