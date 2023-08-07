@@ -1,10 +1,8 @@
 <template>
-  <div ref="Chart" class="chart" :style="{ '--w': width, '--h': height }"></div>
+  <Echart :width="width" :height="height" :option="getFullOptions()" />
 </template>
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from "vue";
-import * as echarts from "echarts";
-import { debounce } from "@/utils/tools.js";
+import Echart from "../components/echart.vue";
 import { merge } from "lodash";
 import { BASIC_OPTION } from "./defaultOption";
 import { fitChartSize } from "@/utils/echartSize";
@@ -27,26 +25,7 @@ const props = defineProps({
     default: 300,
   },
 });
-const Chart = ref(null);
-let mChart = null;
-onMounted(() => {
-  mChart = echarts.init(Chart.value);
-  renderChart();
-  window.addEventListener("resize", debounce(resizeChart, 300));
-});
-const resizeChart = () => {
-  if (mChart) {
-    mChart.resize();
-    renderChart();
-  }
-};
-// 渲染图表
-const renderChart = () => {
-  const option = getFullOptions();
-  if (option && typeof option === "object") {
-    mChart.setOption(option);
-  }
-};
+
 // 传入数据生成 option
 const getFullOptions = () => {
   let data = props.data.yData;
@@ -150,15 +129,4 @@ const getFullOptions = () => {
   console.log(merge({}, BASIC_OPTION, o, props.extraOption));
   return merge({}, BASIC_OPTION, o, props.extraOption);
 };
-// 页面卸载
-onBeforeUnmount(() => {
-  window.removeEventListener("resize", resizeChart);
-  mChart.dispose(); //销毁echarts实例
-});
 </script>
-<style lang="less" scoped>
-.chart {
-  width: calc(1px * var(--w));
-  height: calc(1px * var(--h));
-}
-</style>
