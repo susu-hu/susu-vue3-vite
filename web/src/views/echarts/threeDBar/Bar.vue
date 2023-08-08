@@ -1,5 +1,5 @@
 <template>
-  <Echart :width="width" :height="height" :option="getFullOptions()" />
+  <Echart :width="width" :height="height" :option="getFullOptions" />
 </template>
 <script setup>
 import Echart from "../components/Echart.vue";

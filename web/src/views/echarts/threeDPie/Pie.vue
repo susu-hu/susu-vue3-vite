@@ -2,7 +2,7 @@
   <Echart
     :width="width"
     :height="height"
-    :option="getFullOptions()"
+    :option="getFullOptions"
     :chartEvents="chartEvents"
   />
 </template>
