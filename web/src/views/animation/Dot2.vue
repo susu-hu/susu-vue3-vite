@@ -9,15 +9,15 @@
 .container {
   margin: 40px auto;
   .logo {
-    width: 245px;
-    height: 284px;
+    width: 450px;
+    height: 451px;
     transform-style: preserve-3d;
     position: relative;
     &::after {
       content: "";
       width: 100%;
       height: 100%;
-      background: url("@/assets/images/ani/logoo.png") no-repeat;
+      background: url("@/assets/images/ani/logo.png") no-repeat;
       background-size: 100% 100%;
       position: absolute;
       left: 0;
@@ -38,7 +38,7 @@
     width: 288px;
     height: 93px;
     left: calc(50% - 144px);
-    bottom: 45px;
+    bottom: 128px;
     border-radius: 50%;
     position: absolute;
     background: url("@/assets/images/ani/circle-round.png") no-repeat;
