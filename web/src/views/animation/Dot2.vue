@@ -41,7 +41,7 @@
     bottom: 45px;
     border-radius: 50%;
     position: absolute;
-    background: url("@/assets/images/ani/circle0.png") no-repeat;
+    background: url("@/assets/images/ani/circle-round.png") no-repeat;
     background-size: 100% 100%;
     transform-style: preserve-3d;
     transform: rotateZ(0deg) rotateX(1deg);
