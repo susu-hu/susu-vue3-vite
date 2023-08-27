@@ -1,3 +1,11 @@
+<!--
+ * @Author: susu 1628469970@qq.com
+ * @Date: 2023-08-05 23:26:35
+ * @LastEditors: susu 1628469970@qq.com
+ * @LastEditTime: 2023-08-27 22:50:29
+ * @FilePath: \web\src\views\echarts\threeDBar\Bar.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
   <Echart :width="width" :height="height" :option="getFullOptions" />
 </template>
@@ -127,6 +135,6 @@ const getFullOptions = () => {
     ],
   };
   // console.log(merge({}, BASIC_OPTION, _option, props.extraOption));
-  return merge({}, BASIC_OPTION, _option, props.extraOption);
+  return merge({}, BASIC_OPTION(), _option, props.extraOption);
 };
 </script>

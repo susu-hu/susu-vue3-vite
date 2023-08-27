@@ -191,7 +191,7 @@ const getPie3D = (pieData, internalDiameterRatio) => {
 };
 const getFullOptions = () => {
   let _option = getPie3D(props.data, 0.75);
-  return merge({}, BASIC_OPTION, _option, props.extraOption);
+  return merge({}, BASIC_OPTION(), _option, props.extraOption);
 };
 const chartEvents = (myChart, option) => {
   myChart.off(); //先移除事件
