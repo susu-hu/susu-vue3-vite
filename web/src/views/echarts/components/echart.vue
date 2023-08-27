@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2023-08-07 11:50:13
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2023-08-09 00:12:35
+ * @LastEditTime: 2023-08-27 17:15:53
  * @FilePath: \web\src\views\echarts\components\echart.vue
  * @Description: 通用echarts封装
 -->
@@ -40,19 +40,23 @@ const Chart = ref(null);
 let mChart = null;
 onMounted(() => {
   mChart = echarts.init(Chart.value);
+  console.log(1);
   renderChart();
   window.addEventListener("resize", debounce(resizeChart, 300));
 });
 watch(
   () => props.option(),
   (n) => {
+    console.log("bbbb", n);
     if (!n) return;
+    console.log(2);
     mChart && renderChart();
   },
 );
 const resizeChart = () => {
   if (mChart) {
     mChart.resize();
+    console.log(3);
     renderChart(); //重新渲染图表文字大小等
   }
 };
@@ -79,4 +83,3 @@ onBeforeUnmount(() => {
   height: calc(1px * var(--h));
 }
 </style>
-

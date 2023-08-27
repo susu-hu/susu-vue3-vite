@@ -1,10 +1,16 @@
 <template>
   <div class="container" :data-num="content">
-    <Pie :data="data" :extra-option="extraOption" :width="500" :height="264" />
+    <Pie
+      :data="state.data"
+      :extra-option="extraOption"
+      :width="500"
+      :height="264"
+    />
   </div>
 </template>
 <script setup>
 import Pie from "./Pie.vue";
+import { reactive } from "vue";
 const content = "3D环形饼图";
 const data = [
   {
@@ -28,6 +34,54 @@ const data = [
     value: 19,
   },
 ];
+const state = reactive({
+  data: [
+    {
+      name: "测试1",
+      value: 160,
+    },
+    {
+      name: "测试2",
+      value: 244,
+    },
+    {
+      name: "测试3",
+      value: 332,
+    },
+    {
+      name: "测试4",
+      value: 400,
+    },
+    {
+      name: "测试5",
+      value: 19,
+    },
+  ],
+});
+setTimeout(() => {
+  state.data = [
+    {
+      name: "测试1",
+      value: 2,
+    },
+    {
+      name: "测试2",
+      value: 4556,
+    },
+    {
+      name: "测试3",
+      value: 22,
+    },
+    {
+      name: "1",
+      value: 400,
+    },
+    {
+      name: "测试5",
+      value: 233,
+    },
+  ];
+}, 6000);
 const extraOption = {
   color: [
     "#2B99EE",
