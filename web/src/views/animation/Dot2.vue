@@ -36,14 +36,13 @@
   }
   .line {
     width: 288px;
-    height: 93px;
+    height: 94px;
     left: calc(50% - 144px);
     bottom: 128px;
     border-radius: 50%;
     position: absolute;
     background: url("@/assets/images/ani/circle-round.png") no-repeat;
     background-size: 100% 100%;
-    transform-style: preserve-3d;
     transform: rotateZ(0deg) rotateX(1deg);
 
     &::after {
@@ -53,28 +52,149 @@
       height: 11px;
       background: #5fffa5;
       border-radius: 50%;
-      transform-style: preserve-3d;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
+      left:calc(50% - 5px);
+      top:calc(50% - 5px);
       animation: move 10s linear infinite;
     }
 
+    // @keyframes move {
+    //   .loop(0,144px,42px,40);
+    // }
     @keyframes move {
-      .loop(0,144px,42px,30);
+      100% {
+        transform: translate(144px, 0px);
+      }
+      97.5% {
+        transform: translate(142.22712105px, -6.57024753px);
+      }
+      95% {
+        transform: translate(136.95213835px, -12.97871376px);
+      }
+      92.5% {
+        transform: translate(128.30493948px, -19.06760099px);
+      }
+      90% {
+        transform: translate(116.49844719px, -24.6869806px);
+      }
+      87.5% {
+        transform: translate(101.82337649px, -29.69848481px);
+      }
+      85% {
+        transform: translate(84.64107633px, -33.97871376px);
+      }
+      82.5% {
+        transform: translate(65.37463196px, -37.42227402px);
+      }
+      80% {
+        transform: translate(44.49844719px, -39.94437368px);
+      }
+      77.5% {
+        transform: translate(22.52656297px, -41.4829103px);
+      }
+      75% {
+        transform: translate(0px, -42px);
+      }
+      72.5% {
+        transform: translate(-22.52656297px, -41.4829103px);
+      }
+      70% {
+        transform: translate(-44.49844719px, -39.94437368px);
+      }
+      67.5% {
+        transform: translate(-65.37463196px, -37.42227402px);
+      }
+      65% {
+        transform: translate(-84.64107633px, -33.97871376px);
+      }
+      62.5% {
+        transform: translate(-101.82337649px, -29.69848481px);
+      }
+      60% {
+        transform: translate(-116.49844719px, -24.6869806px);
+      }
+      57.5% {
+        transform: translate(-128.30493948px, -19.06760099px);
+      }
+      55% {
+        transform: translate(-136.95213835px, -12.97871376px);
+      }
+      52.5% {
+        transform: translate(-142.22712105px, -6.57024753px);
+      }
+      50% {
+        transform: translate(-144px, 0px);
+      }
+      47.5% {
+        transform: translate(-142.22712105px, 6.57024753px);
+      }
+      45% {
+        transform: translate(-136.95213835px, 12.97871376px);
+      }
+      42.5% {
+        transform: translate(-128.30493948px, 19.06760099px);
+      }
+      40% {
+        transform: translate(-116.49844719px, 24.6869806px);
+      }
+      37.5% {
+        transform: translate(-101.82337649px, 29.69848481px);
+      }
+      35% {
+        transform: translate(-84.64107633px, 33.97871376px);
+      }
+      32.5% {
+        transform: translate(-65.37463196px, 37.42227402px);
+      }
+      30% {
+        transform: translate(-44.49844719px, 39.94437368px);
+      }
+      27.5% {
+        transform: translate(-22.52656297px, 41.4829103px);
+      }
+      25% {
+        transform: translate(0px, 42px);
+      }
+      22.5% {
+        transform: translate(22.52656297px, 41.4829103px);
+      }
+      20% {
+        transform: translate(44.49844719px, 39.94437368px);
+      }
+      17.5% {
+        transform: translate(65.37463196px, 37.42227402px);
+      }
+      15% {
+        transform: translate(84.64107633px, 33.97871376px);
+      }
+      12.5% {
+        transform: translate(101.82337649px, 29.69848481px);
+      }
+      10% {
+        transform: translate(116.49844719px, 24.6869806px);
+      }
+      7.5% {
+        transform: translate(128.30493948px, 19.06760099px);
+      }
+      5% {
+        transform: translate(136.95213835px, 12.97871376px);
+      }
+      2.5% {
+        transform: translate(142.22712105px, 6.57024753px);
+      }
+      0% {
+        transform: translate(144px, 0px);
+      }
     }
   }
-  .loop(@index,@a, @b, @s) when (@index < @s+1) {
-    // 椭圆x轴半径(长半径)@a
-    // 椭圆y轴半径(短半径)@b
-    // 坐标点的数目(数目越大，动画越精细)@s
-    .loop((@index + 1),@a, @b, @s);
-    @keyframeSel: @index * 100% / @s;
-    @{keyframeSel}{
-      transform: translate((@a * cos(360deg / @s*@index)),(@b * sin(360deg / @s*@index)));
-    }
-  }
+  // .loop(@index,@a, @b, @s) when (@index < @s+1) {
+  //   // 椭圆x轴半径(长半径)@a
+  //   // 椭圆y轴半径(短半径)@b
+  //   // 坐标点的数目(数目越大，动画越精细)@s
+  //   .loop((@index + 1),@a, @b, @s);
+  //   @keyframeSel: @index * 100% / @s;
+  //   @{keyframeSel}{
+  //     transform: translate((@a * cos(360deg / @s*@index)),(@b * sin(360deg / @s*@index)));
+  //   }
+  // }
 }
 </style>
