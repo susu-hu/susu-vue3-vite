@@ -13,7 +13,7 @@ export default [
     meta: {
       title: "echart图表",
     },
-    component: () => import("@/views/echarts/Index.vue"),
+    component: () => import( "@/views/echarts/Index.vue" ),
   },
   {
     path: "/echarts/threeDBar",
@@ -21,7 +21,7 @@ export default [
     meta: {
       title: "立体柱状图",
     },
-    component: () => import("@/views/echarts/threeDBar/Index.vue"),
+    component: () => import( "@/views/echarts/threeDBar/Index.vue" ),
   },
   {
     path: "/echarts/threeDPie",
@@ -29,7 +29,7 @@ export default [
     meta: {
       title: "3d环形饼图",
     },
-    component: () => import("@/views/echarts/threeDPie/Index.vue"),
+    component: () => import( "@/views/echarts/threeDPie/Index.vue" ),
   },
   {
     path: "/echarts/lineFlow",
@@ -37,6 +37,14 @@ export default [
     meta: {
       title: "折线图流光效果",
     },
-    component: () => import("@/views/echarts/lineFlow/Index.vue"),
+    component: () => import( "@/views/echarts/lineFlow/Index.vue" ),
+  },
+  {
+    path: "/echarts/threeDBarShadow",
+    name: "threeDBarShadow",
+    meta: {
+      title: "立体柱状图带阴影",
+    },
+    component: () => import( "@/views/echarts/threeDBarShadow/Index.vue" ),
   },
 ];

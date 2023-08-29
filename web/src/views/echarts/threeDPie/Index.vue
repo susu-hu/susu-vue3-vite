@@ -40,22 +40,22 @@ const state = reactive({
       name: "测试1",
       value: 160,
     },
-    {
-      name: "测试2",
-      value: 244,
-    },
-    {
-      name: "测试3",
-      value: 332,
-    },
-    {
-      name: "测试4",
-      value: 400,
-    },
-    {
-      name: "测试5",
-      value: 19,
-    },
+    // {
+    //   name: "测试2",
+    //   value: 244,
+    // },
+    // {
+    //   name: "测试3",
+    //   value: 332,
+    // },
+    // {
+    //   name: "测试4",
+    //   value: 400,
+    // },
+    // {
+    //   name: "测试5",
+    //   value: 19,
+    // },
   ],
 });
 setTimeout(() => {
@@ -64,22 +64,22 @@ setTimeout(() => {
       name: "测试1",
       value: 2,
     },
-    {
-      name: "测试2",
-      value: 4556,
-    },
-    {
-      name: "测试3",
-      value: 22,
-    },
-    {
-      name: "1",
-      value: 400,
-    },
-    {
-      name: "测试5",
-      value: 233,
-    },
+    // {
+    //   name: "测试2",
+    //   value: 4556,
+    // },
+    // {
+    //   name: "测试3",
+    //   value: 22,
+    // },
+    // {
+    //   name: "1",
+    //   value: 400,
+    // },
+    // {
+    //   name: "测试5",
+    //   value: 233,
+    // },
   ];
 }, 6000);
 const extraOption = {
