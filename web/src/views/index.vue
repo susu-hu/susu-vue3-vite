@@ -1,10 +1,10 @@
 <!--
  * @Author: susu 1628469970@qq.com
- * @Date: 2022-10-10 00:18:53
- * @LastEditors: 胡苏珍 1628469970@qq.com
- * @LastEditTime: 2023-07-26 11:50:23
+ * @Date: 2022-10-21 12:55:31
+ * @LastEditors: susu 1628469970@qq.com
+ * @LastEditTime: 2023-09-06 13:26:39
  * @FilePath: \web\src\views\index.vue
- * @Description: 首页
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
   <div class="container flex-row j_c flex-wrap">

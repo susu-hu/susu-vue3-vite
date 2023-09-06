@@ -1,7 +1,7 @@
 <!--
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-12-29 20:57:17
- * @LastEditors: 胡苏珍 1628469970@qq.com
+ * @LastEditors: susu 1628469970@qq.com
  * @LastEditTime: 2023-01-17 16:04:10
  * @FilePath: \web\src\views\echarts\ThreeDBar.vue
  * @Description:  立体柱状图
