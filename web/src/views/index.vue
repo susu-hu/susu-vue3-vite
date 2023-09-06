@@ -32,7 +32,6 @@
       />
     </div>
   </div>
-  <div @click="jump">跳转</div>
 </template>
 
 <script setup>

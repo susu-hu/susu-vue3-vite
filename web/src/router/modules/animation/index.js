@@ -22,5 +22,12 @@ export default [
     meta: {
       title: "dot2",
     },
+  }, {
+    path: "/animation/numScroll",
+    name: "numScroll",
+    component: () => import("@/views/animation/numScroll.vue"),
+    meta: {
+      title: "numScroll",
+    },
   },
 ];
