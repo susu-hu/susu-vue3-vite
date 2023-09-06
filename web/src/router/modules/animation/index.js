@@ -10,7 +10,7 @@ export default [
   {
     path: "/animation/dot",
     name: "dot",
-    component: () => import("@/views/animation/Dot.vue"),
+    component: () => import("@/views/animation/dot.vue"),
     meta: {
       title: "dot",
     },
@@ -18,7 +18,7 @@ export default [
   {
     path: "/animation/dot2",
     name: "dot2",
-    component: () => import("@/views/animation/Dot2.vue"),
+    component: () => import("@/views/animation/dot2.vue"),
     meta: {
       title: "dot2",
     },

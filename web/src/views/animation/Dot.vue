@@ -12,7 +12,7 @@
   .logo {
     width: 245px;
     height: 284px;
-    background: url("@/assets/images/ani/logoo.png") no-repeat;
+    background: url("@/assets/images/ani/logo.png") no-repeat;
     background-size: 100% 100%;
     transform-style: preserve-3d;
     position: relative;
@@ -24,7 +24,7 @@
     bottom: -50px;
     border-radius: 50%;
     position: absolute;
-    background: url("@/assets/images/ani/circle.png") no-repeat;
+    border:2px solid pink;
     background-size: 100% 100%;
     transform-style: preserve-3d;
     transform: rotateZ(90deg) rotateY(109deg);
