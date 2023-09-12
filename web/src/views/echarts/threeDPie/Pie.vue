@@ -4,6 +4,7 @@
     :height="height"
     :option="getFullOptions"
     :chartEvents="chartEvents"
+    is-dispose
   />
 </template>
 <script setup>

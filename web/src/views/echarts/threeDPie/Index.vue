@@ -12,50 +12,28 @@
 import Pie from "./Pie.vue";
 import { reactive } from "vue";
 const content = "3D环形饼图";
-const data = [
-  {
-    name: "测试1",
-    value: 160,
-  },
-  {
-    name: "测试2",
-    value: 244,
-  },
-  {
-    name: "测试3",
-    value: 332,
-  },
-  {
-    name: "测试4",
-    value: 400,
-  },
-  {
-    name: "测试5",
-    value: 19,
-  },
-];
 const state = reactive({
   data: [
     {
       name: "测试1",
       value: 160,
     },
-    // {
-    //   name: "测试2",
-    //   value: 244,
-    // },
-    // {
-    //   name: "测试3",
-    //   value: 332,
-    // },
-    // {
-    //   name: "测试4",
-    //   value: 400,
-    // },
-    // {
-    //   name: "测试5",
-    //   value: 19,
-    // },
+    {
+      name: "测试2",
+      value: 244,
+    },
+    {
+      name: "测试3",
+      value: 332,
+    },
+    {
+      name: "测试4",
+      value: 400,
+    },
+    {
+      name: "测试5",
+      value: 19,
+    },
   ],
 });
 setTimeout(() => {
@@ -64,24 +42,28 @@ setTimeout(() => {
       name: "测试1",
       value: 2,
     },
-    // {
-    //   name: "测试2",
-    //   value: 4556,
-    // },
-    // {
-    //   name: "测试3",
-    //   value: 22,
-    // },
-    // {
-    //   name: "1",
-    //   value: 400,
-    // },
-    // {
-    //   name: "测试5",
-    //   value: 233,
-    // },
   ];
 }, 6000);
+setTimeout(() => {
+  state.data = [
+    {
+      name: "测试1",
+      value: 2,
+    },
+    {
+      name: "测试2",
+      value: 4556,
+    },
+    {
+      name: "测试3",
+      value: 22,
+    },
+    {
+      name: "1",
+      value: 400,
+    },
+  ];
+}, 12000);
 const extraOption = {
   color: [
     "#2B99EE",

@@ -35,6 +35,10 @@ const props = defineProps({
     type: Function,
     default: () => () => {},
   },
+  isDispose: {
+    type: Boolean,
+    default: false,
+  },
 });
 const Chart = ref(null);
 let mChart = null;
@@ -50,6 +54,10 @@ watch(
     console.log("bbbb", n);
     if (!n) return;
     console.log(2);
+    if (props.isDispose) {
+      mChart && mChart.dispose(); //销毁echarts实例
+      mChart = echarts.init(Chart.value);
+    }
     mChart && renderChart();
   },
 );
