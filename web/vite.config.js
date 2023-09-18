@@ -17,4 +17,11 @@ export default defineConfig({
       "@": resolve(__dirname, "./src"),
     },
   },
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true, // 如果在 Less 中使用了 JavaScript 表达式，需要设置为 true
+      },
+    },
+  },
 });

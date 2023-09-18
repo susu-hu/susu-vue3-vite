@@ -6,6 +6,7 @@
   </div>
 </template>
 <style lang="less" scoped>
+@bg: #5fffa5;
 .container {
   margin: 40px auto;
   .logo {
@@ -50,10 +51,10 @@
       position: absolute;
       width: 11px;
       height: 11px;
-      background: #5fffa5;
+      background: @bg;
       border-radius: 50%;
-      left:calc(50% - 5px);
-      top:calc(50% - 5px);
+      left: calc(50% - 5px);
+      top: calc(50% - 5px);
       animation: move 10s linear infinite;
     }
 
