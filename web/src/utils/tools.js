@@ -13,3 +13,13 @@ export const debounce = (fn, delay = 1000) => {
     }, delay);
   };
 };
+
+/**
+ * 根据索引循环取数值的值，取模运算符（%）来实现循环取数组的值
+ * @param {*} array
+ * @param {*} sort
+ * @returns
+ */
+export const forArrayValue = (array, sort) => {
+  return array[sort % array.length];
+};
