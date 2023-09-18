@@ -103,7 +103,6 @@ section {
   bottom: 10%;
   animation: rise 3s infinite linear;
   animation-delay: calc(600ms * var(--d));
-  left: calc(1% * var(--x));
 }
 @keyframes rise {
   0% {
