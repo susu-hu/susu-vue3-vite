@@ -2,12 +2,16 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2023-08-07 11:50:13
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2023-08-27 22:46:15
+ * @LastEditTime: 2023-10-16 11:32:14
  * @FilePath: \web\src\views\echarts\components\echart.vue
  * @Description: 通用echarts封装
 -->
 <template>
-  <div ref="Chart" class="chart" :style="{ '--w': width, '--h': height }"></div>
+  <div
+    ref="Chart"
+    :class="['chart', { full: isCarpeted }]"
+    :style="{ '--w': width, '--h': height }"
+  ></div>
 </template>
 <script setup>
 import { ref, onMounted, onBeforeUnmount, watch } from "vue";
@@ -36,6 +40,11 @@ const props = defineProps({
     default: () => () => {},
   },
   isDispose: {
+    type: Boolean,
+    default: false,
+  },
+  // 是否铺满父元素
+  isCarpeted: {
     type: Boolean,
     default: false,
   },
@@ -89,5 +98,9 @@ onBeforeUnmount(() => {
 .chart {
   width: calc(1px * var(--w));
   height: calc(1px * var(--h));
+  &.full {
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>

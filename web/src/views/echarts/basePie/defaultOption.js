@@ -48,13 +48,13 @@ export const BASIC_OPTION = () => {
               borderWidth: fitChartSize(1),
             },
             name: {
-              padding: [fitChartSize(-25), fitChartSize(-0), 0, 0],
+              padding: [fitChartSize(-25), fitChartSize(-90), 0, 0],
               fontSize: fitChartSize(14),
             },
             value: {
               fontSize: fitChartSize(16),
               fontWeight: "Bold",
-              padding: [fitChartSize(-25), fitChartSize(10), 0, 0],
+              padding: [fitChartSize(-25), fitChartSize(15), 0, 0],
             },
           },
         },

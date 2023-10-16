@@ -1,10 +1,9 @@
 <template>
   <Echart
-    :width="width"
-    :height="height"
     :option="getFullOptions"
     :chartEvents="chartEvents"
     is-dispose
+    v-bind="$attrs"
   />
 </template>
 <script setup>
@@ -22,14 +21,14 @@ const props = defineProps({
     type: Object,
     default: () => {},
   },
-  width: {
-    type: Number,
-    default: 300,
-  },
-  height: {
-    type: Number,
-    default: 300,
-  },
+  // width: {
+  //   type: Number,
+  //   default: 300,
+  // },
+  // height: {
+  //   type: Number,
+  //   default: 300,
+  // },
 });
 // 生成扇形的曲面参数方程
 const getParametricEquation = (

@@ -26,7 +26,7 @@ const state = reactive({
       name: "测试三",
     },
     {
-      value: 20,
+      value: 60,
       name: "测试四",
     },
     {

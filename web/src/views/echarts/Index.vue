@@ -1,7 +1,7 @@
 <template>
-  <LineFlow />
+  <!-- <LineFlow />
   <ThreeDPie />
-  <ThreeDBar />
+  <ThreeDBar /> -->
   <BasePie/>
 </template>
 <script setup>

@@ -1,11 +1,6 @@
 <template>
   <div class="container" :data-num="content">
-    <Pie
-      :data="state.data"
-      :extra-option="extraOption"
-      :width="500"
-      :height="264"
-    />
+    <Pie :data="state.data" :extra-option="extraOption" isCarpeted />
   </div>
 </template>
 <script setup>
