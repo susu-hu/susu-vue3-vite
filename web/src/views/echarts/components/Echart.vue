@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2023-08-07 11:50:13
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2023-10-16 11:32:14
+ * @LastEditTime: 2023-10-17 11:59:41
  * @FilePath: \web\src\views\echarts\components\echart.vue
  * @Description: 通用echarts封装
 -->
@@ -14,7 +14,7 @@
   ></div>
 </template>
 <script setup>
-import { ref, onMounted, onBeforeUnmount, watch } from "vue";
+import { ref, onMounted, onBeforeUnmount, watch, nextTick } from "vue";
 import * as echarts from "echarts";
 import { debounce } from "lodash";
 const props = defineProps({
@@ -64,10 +64,17 @@ watch(
     if (!n) return;
     console.log(2);
     if (props.isDispose) {
+      console.log("sdsfsf");
+      // mChart && mChart.clear(); //清空当前实例，会移除实例中所有的组件和图表
       mChart && mChart.dispose(); //销毁echarts实例
+      // console.log(mChart.isDisposed());
       mChart = echarts.init(Chart.value);
+      // console.log(mChart.isDisposed());
     }
-    mChart && renderChart();
+    nextTick(() => {
+      // mChart && renderChart();
+      mChart && resizeChart();
+    });
   },
 );
 const resizeChart = () => {

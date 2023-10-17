@@ -1,11 +1,18 @@
 <template>
+  <div @click="click">点击</div>
   <div class="container" :data-num="content">
-    <Pie :data="state.data" :extra-option="extraOption" isCarpeted />
+    <Pie
+      :data="state.data"
+      :extra-option="extraOption"
+      isDispose
+      isCarpeted
+      :class="[a && 'custom-cahart']"
+    />
   </div>
 </template>
 <script setup>
 import Pie from "./Pie.vue";
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 const content = "3D环形饼图";
 const state = reactive({
   data: [
@@ -31,15 +38,11 @@ const state = reactive({
     },
   ],
 });
-setTimeout(() => {
-  state.data = [
-    {
-      name: "测试1",
-      value: 2,
-    },
-  ];
-}, 6000);
-setTimeout(() => {
+const a = ref("");
+const width = ref(500),
+  height = ref(500);
+const click = () => {
+  a.value = !a.value;
   state.data = [
     {
       name: "测试1",
@@ -58,7 +61,38 @@ setTimeout(() => {
       value: 400,
     },
   ];
-}, 12000);
+  width.value = 400;
+  height.value = 800;
+};
+
+// setTimeout(() => {
+//   state.data = [
+//     {
+//       name: "测试1",
+//       value: 2,
+//     },
+//   ];
+// }, 6000);
+// setTimeout(() => {
+//   state.data = [
+//     {
+//       name: "测试1",
+//       value: 2,
+//     },
+//     {
+//       name: "测试2",
+//       value: 4556,
+//     },
+//     {
+//       name: "测试3",
+//       value: 22,
+//     },
+//     {
+//       name: "1",
+//       value: 400,
+//     },
+//   ];
+// }, 12000);
 const extraOption = {
   color: [
     "#2B99EE",
@@ -102,5 +136,9 @@ const extraOption = {
   left: 50%;
   transform: translate(-50%);
   top: 30%;
+}
+.custom-cahart {
+  width: 80% !important;
+  height: 50vh !important;
 }
 </style>
